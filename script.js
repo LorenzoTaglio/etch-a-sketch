@@ -2,6 +2,13 @@ const gridContainer = document.querySelector(".grid-container");
 const root = document.querySelector(":root");
 const tilesNum = document.querySelector(".change-tiles-num");
 
+const colorPicker = document.querySelector("input#colorPicker");
+
+colorPicker.addEventListener("change", e=>{
+    root.style.setProperty("--bgCol", e.target.value);
+})
+
+
 function removeTiles() {
     while(gridContainer.firstChild){
         gridContainer.firstChild.remove();
@@ -21,7 +28,9 @@ function createGrid() {
 }
 
 function colorTile(event) {
-    event.target.classList.add("filled");
+    let styleVar = getComputedStyle(root);
+    event.target.style.setProperty("background-color", styleVar.getPropertyValue("--bgCol"));
+    // event.target.classList.add("filled");
 }
 
 function changeTilesNum(){
