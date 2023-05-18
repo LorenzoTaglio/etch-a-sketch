@@ -8,4 +8,12 @@ function createGrid() {
     }
 }
 
+function colorTile(event) {
+    event.target.style.backgroundColor = "red";
+}
+
 createGrid();
+
+gridContainer.childNodes.forEach(tile =>{
+    tile.addEventListener("mouseenter", e=>colorTile(e));
+})
