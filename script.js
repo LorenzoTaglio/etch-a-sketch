@@ -2,12 +2,30 @@ const gridContainer = document.querySelector(".grid-container");
 const root = document.querySelector(":root");
 const tilesNum = document.querySelector(".change-tiles-num");
 
-const colorPicker = document.querySelector("input#colorPicker");
+const colorPicker = document.querySelector("input");
+
+const rainbowmodeButton = document.querySelector(".rainbow");
+let rainbowModeActive = false;
 
 colorPicker.addEventListener("change", e=>{
     root.style.setProperty("--bgCol", e.target.value);
 })
 
+rainbowmodeButton.addEventListener("click", ()=>{
+    if(rainbowModeActive) {
+        rainbowModeActive = false;
+        rainbowmodeButton.textContent = "Rainobow Mode: OFF";
+    }
+    else{
+        rainbowModeActive = true;
+        rainbowmodeButton.textContent = "Rainobow Mode: ON";
+    } 
+})
+
+function randomColor(){
+    console.log("cacca");
+    return "#" + Math.floor(Math.random()*0xffffff+1).toString(16);
+}
 
 function removeTiles() {
     while(gridContainer.firstChild){
@@ -28,8 +46,12 @@ function createGrid() {
 }
 
 function colorTile(event) {
-    let styleVar = getComputedStyle(root);
-    event.target.style.setProperty("background-color", styleVar.getPropertyValue("--bgCol"));
+    if(rainbowModeActive)
+        event.target.style.setProperty("background-color", randomColor());
+    else{
+        let styleVar = getComputedStyle(root);
+        event.target.style.setProperty("background-color", styleVar.getPropertyValue("--bgCol"));
+    }
     // event.target.classList.add("filled");
 }
 
@@ -38,7 +60,7 @@ function changeTilesNum(){
     do{
         tNum = prompt("How many tiles do you want? (max: 100)");
         console.log(tNum);
-    }while((tNum < 1 || tNum > 100) && tNum !== null? (alert("Invalid tiles number"),1) : 0);
+    }while((tNum < 1 || tNum > 100) && tNum !== null ? (alert("Invalid tiles number"),1) : 0);
     root.style.setProperty("--tilesNum", `${tNum}`);
     createGrid();
     
@@ -49,5 +71,5 @@ function activateTiles(){
     })    
 }
 createGrid();
-
+console.log(randomColor());
 tilesNum.addEventListener("click",()=>{changeTilesNum()});
