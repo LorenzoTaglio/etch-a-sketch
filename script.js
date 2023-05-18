@@ -1,7 +1,10 @@
 const gridContainer = document.querySelector(".grid-container");
+const root = document.querySelector(":root");
+
 
 function createGrid() {
-    for(let i=0;i<16*16;i++){
+    let styleVar = getComputedStyle(root);
+    for(let i=0;i<styleVar.getPropertyValue("--tilesNum")**2;i++){
         let tile = document.createElement("div");
         tile.classList.add("tile");
         gridContainer.appendChild(tile);
