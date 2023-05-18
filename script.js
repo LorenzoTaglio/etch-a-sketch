@@ -9,7 +9,7 @@ function createGrid() {
 }
 
 function colorTile(event) {
-    event.target.style.backgroundColor = "red";
+    event.target.classList.add("filled");
 }
 
 createGrid();

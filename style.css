@@ -14,7 +14,13 @@
 }
 
 .tile{
+    --tilesNum: 16;
     border: 1px solid red;
     box-sizing: border-box;
-    flex: 0 1 calc(100%/16);
+    flex: 0 1 calc(100%/var(--tilesNum));
+}
+
+.filled{
+    --bgCol: red;
+    background-color: var(--bgCol);
 }
