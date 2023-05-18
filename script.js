@@ -8,8 +8,8 @@ function removeTiles() {
     }
 }
 
+// when changing the number of tiles, remove the previous ones and activate the new ones.
 function createGrid() {
-    // when changing the number of tiles, previous tiles needs to be deleted
     removeTiles();
     let styleVar = getComputedStyle(root);
     for(let i=0;i<styleVar.getPropertyValue("--tilesNum")**2;i++){
@@ -40,6 +40,5 @@ function activateTiles(){
     })    
 }
 createGrid();
-
 
 tilesNum.addEventListener("click",()=>{changeTilesNum()});
