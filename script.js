@@ -7,11 +7,17 @@ const colorPicker = document.querySelector("input");
 const rainbowmodeButton = document.querySelector(".rainbow");
 let rainbowModeActive = false;
 
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", ()=>{clearGrid()});
+
+
 colorPicker.addEventListener("change", e=>{
     root.style.setProperty("--bgCol", e.target.value);
 })
 
 rainbowmodeButton.addEventListener("click", ()=>{
+    rainbowmodeButton.classList.toggle("active");
     if(rainbowModeActive) {
         rainbowModeActive = false;
         rainbowmodeButton.textContent = "Rainobow Mode: OFF";
@@ -21,6 +27,12 @@ rainbowmodeButton.addEventListener("click", ()=>{
         rainbowmodeButton.textContent = "Rainobow Mode: ON";
     } 
 })
+
+function clearGrid(){
+    gridContainer.childNodes.forEach(tile =>{
+        tile.style.setProperty("background-color", "#ffffff");
+    })
+}
 
 function randomColor(){
     console.log("cacca");

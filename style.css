@@ -1,21 +1,49 @@
-:root{
-    --tilesNum: 16;
-    --bgCol: red;
-}
-
-.body{
+*{
+    color: #FFFFFF;
     margin: 0;
     border: 0;
-    width: 100vw;
-    height: 100vh;
+}
+
+:root{
+    --tilesNum: 16;
+    --bgCol: #000000;
+}
+html{
+    max-height: 100vh;
+}
+body{
+    width: 100%;
+    background-color: rgb(10,20,40);
+}
+
+.title{
+    margin-left: 48px;
+}
+
+.title > h1{
+    font-size: 64px;
+    color: rgb(100,100,10);
+}
+
+.tilte > p{
+    font-size: 24px;
+}
+
+.container{
+    margin-top: 24px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .grid-container{
+    margin: 0 48px;
     border: 2px solid black;
     width: 800px;
     aspect-ratio: 1;
     display: flex;
     flex-wrap: wrap;
+    background-color: #FFFFFF;
 }
 
 .tile{
@@ -24,4 +52,39 @@
 
 .filled{
     background-color: var(--bgCol);
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.options > button{
+    background-color: rgb(150,50,50);
+    border: none;
+    font-size: 24px;
+}
+
+.color-picker-label{
+    width: 100%;
+    font-size: 24px;
+}
+
+.rainbow.active{
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,154,0,1) 10%, rgba(208,222,33,1) 20%, rgba(79,220,74,1) 30%, rgba(63,218,216,1) 40%, rgba(47,201,226,1) 50%, rgba(28,127,238,1) 60%, rgba(95,21,242,1) 70%, rgba(186,12,248,1) 80%, rgba(251,7,217,1) 90%, rgba(255,0,0,1) 100%);
+    background-size: 200%;
+    animation: bgAnim 1s linear 0s infinite;
+}
+
+@keyframes bgAnim {
+    0%{
+        background-position: 200%;
+    }
+    50%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: -200%;
+    }
 }
