@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Etch-a-Sketch-y</h1>
-    <p>The best (not really) Etch-a-Sketch on the web</p>
+    <div class="title">
+        <h1>Etch-a-Sketch-y</h1>
+        <p>The best (not really) Etch-a-Sketch on the web</p>
+    </div>
     <div class="container">
         <div class="grid-container">
             <!--Tiles Created with JavaScript-->
         </div>
-        <button class="change-tiles-num">Change the number of tiles!</button>
-        <label for="colorPicker">Choose another color!</label>
-        <input type="color" id="colorPicker" value="#000000">
-        <button class="rainbow">Rainbow mode: OFF</button>
+        <div class="options">
+            <button class="change-tiles-num">Change the number of tiles!</button>
+            <button class="rainbow">Rainbow mode: OFF</button>
+            <button class="clear">Clear</button>
+            <div class="color-picker-label">
+                <label for="colorPicker">Choose another color!</label>                
+                <input type="color" id="colorPicker" value="#000000">
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
